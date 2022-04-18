@@ -1,7 +1,5 @@
 package baseball.model;
 
-import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,5 +23,39 @@ public class Baseball {
         }
 
         return ballList;
+    }
+
+    public GuessResult guessBaseball(List<Integer> userGuess) {
+        Baseball userBalls = new Baseball(userGuess);
+        GuessResult result = new GuessResult();
+
+        for (Ball ball : ballList) {
+            GuessStatus status = userBalls.guessBall(ball);
+            result.update(status);
+        }
+
+        return result;
+    }
+
+    public GuessStatus guessBall(Ball ball) {
+        int statusCode = 0;
+
+        for (int i = 0; i < BALL_SIZE; i++) {
+            statusCode += ballList.get(i).guess(ball).getResult();
+        }
+
+        return getGuessStatus(statusCode);
+    }
+
+    private GuessStatus getGuessStatus(int statusCode) {
+        if (statusCode == GuessStatus.Nothing.getResult()) {
+            return GuessStatus.Nothing;
+        }
+
+        if (statusCode == GuessStatus.Ball.getResult()) {
+            return GuessStatus.Ball;
+        }
+
+        return GuessStatus.Strike;
     }
 }
