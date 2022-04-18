@@ -20,7 +20,7 @@ public class GuessResult {
 
     public String result() {
         if (hasStrikeAndBall()) {
-            return strike + "스트라이크 " + ball + "볼";
+            return ball + "볼 " + strike + "스트라이크";
         }
 
         return hasStrikeBallNothing();
