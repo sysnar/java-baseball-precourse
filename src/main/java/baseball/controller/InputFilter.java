@@ -15,4 +15,16 @@ public class InputFilter {
 
         return result;
     }
+
+    public boolean isRestart(String restartInput) {
+        if (restartInput.equals("1")) {
+            return true;
+        }
+
+        if (restartInput.equals("2")) {
+            return false;
+        }
+
+        throw new IllegalArgumentException("ERROR: 올바른 숫자를 입력해주세요.");
+    }
 }

@@ -27,7 +27,7 @@ public class Baseball {
 
     public GuessResult guessBaseball(List<Integer> userGuess) {
         Baseball userBalls = new Baseball(userGuess);
-        GuessResult result = GuessResult.getGuessResult();
+        GuessResult result = new GuessResult();
 
         for (Ball ball : ballList) {
             GuessStatus status = userBalls.guessBall(ball);

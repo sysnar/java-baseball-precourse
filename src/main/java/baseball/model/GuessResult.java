@@ -4,13 +4,8 @@ public class GuessResult {
 
     private int strike = 0;
     private int ball = 0;
-    private final static GuessResult guessResult = new GuessResult();
 
-    private GuessResult() {}
-
-    public static GuessResult getGuessResult() {
-        return guessResult;
-    }
+    public GuessResult() {}
 
     public boolean isPlaying() {
         return strike != 3;
